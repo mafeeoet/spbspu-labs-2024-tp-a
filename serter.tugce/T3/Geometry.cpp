@@ -1,8 +1,13 @@
 #include "Geometry.h"
 
+#include <algorithm>
+#include <iterator>
+
+#include "ReadIO.h"
+
 static size_t index = 0;
 
-std::istream& serter::operator>>(std::istream& in, serter::Polygon& dest)
+std::istream& serter::operator>>(std::istream& in, Polygon& dest)
 {
   std::istream::sentry sentry(in);
   if (!sentry)
@@ -27,7 +32,12 @@ std::istream& serter::operator>>(std::istream& in, serter::Polygon& dest)
   return in;
 }
 
-std::istream& serter::operator>>(std::istream& in, serter::Point& dest)
+bool serter::operator==(const Point& lhs, const Point& rhs)
+{
+  return lhs.x == rhs.x && lhs.y == rhs.y;
+}
+
+std::istream& serter::operator>>(std::istream& in, Point& dest)
 {
   std::istream::sentry sentry(in);
   if (!sentry)
@@ -41,4 +51,3 @@ std::istream& serter::operator>>(std::istream& in, serter::Point& dest)
   in >> DelimiterIO{ ')' };
   return in;
 }
-

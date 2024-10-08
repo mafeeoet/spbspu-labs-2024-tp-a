@@ -3,8 +3,7 @@
 #include <iostream>
 
 #include "dataIO.hpp"
-#include "FormatGuard.hpp"
-
+#include <FormatGuard.hpp>
 namespace serter
 {
   std::istream& operator>>(std::istream& in, DataStruct& value)
